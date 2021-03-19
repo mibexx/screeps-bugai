@@ -4,6 +4,5 @@ import MidwifeFacadeInterface from "./MidwifeFacadeInterface";
 
 export default class MidwifeFacade extends AbstractFacade<MidwifeFactory> implements MidwifeFacadeInterface {
     bornBugs(): void {
-        console.log("Born bugs");
     }
 }

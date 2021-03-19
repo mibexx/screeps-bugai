@@ -14,7 +14,6 @@ export default class BugAi implements BugAiInterface {
     private tickProcessPlugins: TickProcessPluginInterface[];
 
     private constructor(registry: RegistryInterface) {
-        console.log("Build bug ai...");
         this.registry = registry;
         this.localizer = new Localizer();
         this.dependencyContainer = new Container(this.localizer);
@@ -42,7 +41,6 @@ export default class BugAi implements BugAiInterface {
 
     runTick() {
         this.tickProcessPlugins.forEach((processPlugin) => {
-            console.log("Run: " + typeof(processPlugin));
             processPlugin.process(this.localizer);
         });
     }
