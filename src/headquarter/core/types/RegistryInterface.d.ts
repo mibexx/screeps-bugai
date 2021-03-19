@@ -1,7 +1,8 @@
-import {DependencyProviderInterface} from "../../dependencies/types/DependencyProviderInterface";
-import LocalizerProviderInterface from "./LocalizerProviderInterface";
+import {DependencyProviderPluginInterface} from "./plugins/DependencyProviderPluginInterface";
+import LocalizerProviderPluginInterface from "./plugins/LocalizerProviderPluginInterface";
 
 export default interface RegistryInterface {
-    getDependencyProvider(): DependencyProviderInterface[];
-    getLocalizerProvider(): LocalizerProviderInterface[];
+    getDependencyProvider(): DependencyProviderPluginInterface[];
+    getLocalizerProvider(): LocalizerProviderPluginInterface[];
+    getTickProcessPlugins(): TickProcessPluginInterface[];
 }

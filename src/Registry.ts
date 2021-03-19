@@ -1,19 +1,27 @@
 import RegistryInterface from "./headquarter/core/types/RegistryInterface";
-import {DependencyProviderInterface} from "./headquarter/dependencies/types/DependencyProviderInterface";
+import {DependencyProviderPluginInterface} from "./headquarter/core/types/plugins/DependencyProviderPluginInterface";
 import BugAiDependencyProvider from "./headquarter/core/BugAiDependencyProvider";
-import LocalizerProviderInterface from "./headquarter/core/types/LocalizerProviderInterface";
+import LocalizerProviderPluginInterface from "./headquarter/core/types/plugins/LocalizerProviderPluginInterface";
 import StorageLocalizerProvider from "./division/storage/plugin/StorageLocalizerProvider";
+import TickProcessPluginInterface from "./headquarter/core/types/plugins/TickProcessPluginInterface";
+import StorageTickProcessPlugin from "./division/storage/plugin/StorageTickProcessPlugin";
 
 export default class Registry implements RegistryInterface{
-    getDependencyProvider(): DependencyProviderInterface[] {
+    getDependencyProvider(): DependencyProviderPluginInterface[] {
         return [
             new BugAiDependencyProvider()
         ];
     }
 
-    getLocalizerProvider(): LocalizerProviderInterface[] {
+    getLocalizerProvider(): LocalizerProviderPluginInterface[] {
         return [
             new StorageLocalizerProvider()
+        ];
+    }
+
+    getTickProcessPlugins(): TickProcessPluginInterface[] {
+        return [
+            new StorageTickProcessPlugin()
         ];
     }
 }
