@@ -5,6 +5,8 @@ import LocalizerProviderPluginInterface from "./headquarter/core/types/plugins/L
 import StorageLocalizerProvider from "./division/storage/plugin/StorageLocalizerProvider";
 import TickProcessPluginInterface from "./headquarter/core/types/plugins/TickProcessPluginInterface";
 import StorageTickProcessPlugin from "./division/storage/plugin/StorageTickProcessPlugin";
+import CleanerTickProcessPlugin from "./division/cleaner/plugin/CleanerTickProcessPlugin";
+import CleanerLocalizerProviderPlugin from "./division/cleaner/plugin/CleanerLocalizerProviderPlugin";
 
 export default class Registry implements RegistryInterface{
     getDependencyProvider(): DependencyProviderPluginInterface[] {
@@ -15,13 +17,15 @@ export default class Registry implements RegistryInterface{
 
     getLocalizerProvider(): LocalizerProviderPluginInterface[] {
         return [
-            new StorageLocalizerProvider()
+            new StorageLocalizerProvider(),
+            new CleanerLocalizerProviderPlugin()
         ];
     }
 
     getTickProcessPlugins(): TickProcessPluginInterface[] {
         return [
-            new StorageTickProcessPlugin()
+            new StorageTickProcessPlugin(),
+            new CleanerTickProcessPlugin()
         ];
     }
 }

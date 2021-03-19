@@ -1,6 +1,7 @@
 import ContainerInterface from "../../dependencies/types/ContainerInterface";
+import FactoryInterface from "../types/FactoryInterface";
 
-export default abstract class AbstractFactory {
+export default abstract class AbstractFactory implements FactoryInterface {
     private container: ContainerInterface;
 
     constructor(container: ContainerInterface) {

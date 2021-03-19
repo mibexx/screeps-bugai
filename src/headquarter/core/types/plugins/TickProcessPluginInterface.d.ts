@@ -1,3 +1,5 @@
+import LocalizerInterface from "../../../localizer/types/LocalizerInterface";
+
 export default interface TickProcessPluginInterface {
-    process(): void;
+    process(localizer: LocalizerInterface): void;
 }

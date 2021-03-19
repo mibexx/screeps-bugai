@@ -1,13 +1,14 @@
 import FactoryInterface from "../types/FactoryInterface";
+import FacadeInterface from "../types/FacadeInterface";
 
-export default abstract class AbstractFacade {
-    private factory: FactoryInterface;
+export default abstract class AbstractFacade<T extends FactoryInterface> implements FacadeInterface {
+    private factory: T;
 
-    constructor(factory: FactoryInterface) {
+    constructor(factory: T) {
         this.factory = factory;
     }
 
-    protected getFactory(): FactoryInterface {
+    protected getFactory(): T {
         return this.factory;
     };
 }

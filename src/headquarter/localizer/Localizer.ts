@@ -9,10 +9,10 @@ export default class Localizer implements LocalizerInterface {
         this.facades[key] = facade;
     }
 
-    get(key: string): FacadeInterface {
+    get<T extends FacadeInterface>(key: string): T {
         if (!this.facades[key]) {
-            throw new FacadeNotFound(key);
+            throw new FacadeNotFound(key, this.facades);
         }
-        return this.facades[key];
+        return <T>this.facades[key];
     }
 }

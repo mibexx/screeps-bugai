@@ -1,7 +1,8 @@
 import TickProcessPluginInterface from "../../../headquarter/core/types/plugins/TickProcessPluginInterface";
+import LocalizerInterface from "../../../headquarter/localizer/types/LocalizerInterface";
 
 export default class StorageTickProcessPlugin implements TickProcessPluginInterface {
-    process(): void {
-        console.log("Storage: Check (" + Game.time + ")");
+    process(_: LocalizerInterface): void {
+        // TODO: Implement
     }
 }
