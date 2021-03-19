@@ -18,14 +18,6 @@ export default class BugAi implements BugAiInterface {
         this.localizer = new Localizer();
         this.dependencyContainer = new Container(this.localizer);
         this.tickProcessPlugins = this.registry.getTickProcessPlugins();
-
-        this.registry.getLocalizerProvider().forEach((provider) => {
-            provider.provideFacade(this.localizer, this.dependencyContainer);
-        });
-
-        this.registry.getDependencyProvider().forEach((provider) => {
-            provider.provideDependencies(this.dependencyContainer);
-        });
     }
 
     public static getInstance(registry: RegistryInterface): BugAiInterface {
@@ -36,7 +28,13 @@ export default class BugAi implements BugAiInterface {
     }
 
     initialize() {
+        this.registry.getLocalizerProvider().forEach((provider) => {
+            provider.provideFacade(this.localizer, this.dependencyContainer);
+        });
 
+        this.registry.getDependencyProvider().forEach((provider) => {
+            provider.provideDependencies(this.dependencyContainer);
+        });
     }
 
     runTick() {
