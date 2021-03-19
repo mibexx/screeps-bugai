@@ -1,20 +1,11 @@
-// example declaration file - remove these and add your own custom typings
+import {BugAiInterface} from "./headquarter/core/BugAiInterface";
 
-// memory extension samples
-interface CreepMemory {
-  role: string;
-  room: string;
-  working: boolean;
-}
-
-interface Memory {
-  uuid: number;
-  log: any;
-}
+declare var global: any;
 
 // `global` extension samples
 declare namespace NodeJS {
-  interface Global {
-    log: any;
-  }
+    interface Global {
+        log: any;
+        bugAi: BugAiInterface;
+    }
 }

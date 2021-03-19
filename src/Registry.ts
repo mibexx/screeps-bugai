@@ -7,6 +7,8 @@ import TickProcessPluginInterface from "./headquarter/core/types/plugins/TickPro
 import StorageTickProcessPlugin from "./division/storage/plugin/StorageTickProcessPlugin";
 import CleanerTickProcessPlugin from "./division/cleaner/plugin/CleanerTickProcessPlugin";
 import CleanerLocalizerProviderPlugin from "./division/cleaner/plugin/CleanerLocalizerProviderPlugin";
+import MidwifeLocalizerProviderPlugin from "./division/midwife/plugin/MidwifeLocalizerProviderPlugin";
+import MidwifeTickProcessPlugin from "./division/midwife/plugin/MidwifeTickProcessPlugin";
 
 export default class Registry implements RegistryInterface{
     getDependencyProvider(): DependencyProviderPluginInterface[] {
@@ -18,14 +20,21 @@ export default class Registry implements RegistryInterface{
     getLocalizerProvider(): LocalizerProviderPluginInterface[] {
         return [
             new StorageLocalizerProvider(),
+            new MidwifeLocalizerProviderPlugin(),
             new CleanerLocalizerProviderPlugin()
         ];
     }
 
     getTickProcessPlugins(): TickProcessPluginInterface[] {
         return [
+            // Pre
             new StorageTickProcessPlugin(),
-            new CleanerTickProcessPlugin()
+
+            // Do
+            new MidwifeTickProcessPlugin(),
+
+            // Post
+            new CleanerTickProcessPlugin(),
         ];
     }
 }
